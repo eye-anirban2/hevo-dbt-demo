@@ -1,0 +1,21 @@
+# dbt project for the Hevo Edge Transformations demo
+name: 'hevo_demo'
+version: '1.0.0'
+config-version: 2
+
+# Hevo generates the connection profile for each environment at run time.
+profile: 'hevo_demo'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+models:
+  hevo_demo:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  hevo_demo:
+    +quote_columns: false
